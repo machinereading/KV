@@ -14,6 +14,6 @@ results/KBOX-iterative-T1/unlabeled3.tsv
 results/KBOX-iterative-T1/result_analysis.py
 results/KBOX-iterative-T1/pa_unlabeled3.tsv
 data/validation/filtered_normal_DRcheck.tsv
-data/validation/filtered_triples_DRcheck.tsv
-data/validation/filtered_triples2_DRcheck.tsv
-data/validation/filtered_triples3_DRcheck.tsv
+data/validation/filtered_triples_T1_DRcheck.tsv
+data/validation/filtered_triples2_T1_DRcheck.tsv
+data/validation/filtered_triples3_T1_DRcheck.tsv
