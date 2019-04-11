@@ -1,0 +1,21 @@
+{
+	"input":{
+		"training_data": "data/raw_KG/result_changed_only.tsv",
+		"model": "KBCNN",
+		"hyperparam":{
+			"embedding_dimensions": 75,
+			"dropout": 0.2,
+			"epochs": 50,
+			"batch_size": 256,
+			"learning_rate": 0.001,
+			"number_of_filters": 50,
+			"negative_sample_ratio": 5
+		}
+	},
+	
+	"output":{
+		"data_dir": "data/KG/KBOX-iterative-T1/",
+		"model_output":"models/KBOX-iterative-T1.h5",
+		"thresholds_output":"thresholds/T1_thresholds.txt"
+	}
+}

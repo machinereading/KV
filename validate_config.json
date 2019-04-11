@@ -1,0 +1,13 @@
+{
+	"input":{
+		"KG": "data/KBOX-iterative-T1/",
+		"validate_file": "data/validation/filtered_pa_DRcheck.tsv",
+		"model": "models/KBOX-iterative-T1.h5_epochs_30.h5",
+		"thresholds": "thresholds/T1_thresholds.txt"
+	},
+	
+	"output":{
+		"classified_file": "results/KBOX-iterative-T1/pa_labeled.tsv",
+		"no_ent_or_rel_file": "results/KBOX-iterative-T1/pa_unlabeled.tsv"
+	}
+}
