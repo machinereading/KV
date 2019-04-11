@@ -1,4 +1,5 @@
 *.pyc
+.DS_store
 models/
 thresholds/sample_thresholds.txt
 thresholds/T1_test_scores.txt
