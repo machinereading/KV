@@ -167,8 +167,8 @@ output/classified_file: [results/KBOX-iterative-T1/pa_labeled.tsv](results/KBOX-
 박병호_(1986년) birthPlace  미네소타_주  x 0.28
 조선로동당 headquarter 평창군 x 0.1926
 ```
-각 지식의 sbj, rel, obj, label, score가 탭으로 구분되어 출력된다.
-label은 영어 소문자 o, x중 하나. score는 0에서 1사이의 범위.
+각 지식의 sbj, rel, obj, label, score가 탭으로 구분되어 출력됩니다.
+label은 영어 소문자 o, x중 하나. score는 0에서 1사이의 범위입니다.
 
 output/no_ent_or_rel_file: [results/KBOX-iterative-T1/pa_unlabeled.tsv](results/KBOX-iterative-T1/pa_unlabeled.tsv)
 ```
@@ -178,4 +178,18 @@ output/no_ent_or_rel_file: [results/KBOX-iterative-T1/pa_unlabeled.tsv](results/
 유대인 populationPlace 솜보르
 박영효 nationality 조선
 ```
-각 지식의 sbj, rel, obj가 탭으로 구분되어 출력된다.
+각 지식의 sbj, rel, obj가 탭으로 구분되어 출력됩니다.
+
+
+## Licenses
+* `CC BY-NC-SA` [Attribution-NonCommercial-ShareAlike](https://creativecommons.org/licenses/by-nc-sa/2.0/)
+* If you want to commercialize this resource, [please contact to us](http://mrlab.kaist.ac.kr/contact)
+
+## Publisher
+[Machine Reading Lab](http://mrlab.kaist.ac.kr/) @ KAIST
+
+## Contact
+Jiho Kim. `hogajiho@kaist.ac.kr`, `hogajiho@gmail.com`
+
+## Acknowledgement
+This work was supported by Institute for Information & communications Technology Promotion(IITP) grant funded by the Korea government(MSIT) (2013-0-00109, WiseKB: Big data based self-evolving knowledge base and reasoning platform)
