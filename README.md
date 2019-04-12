@@ -139,9 +139,9 @@ influencedBy  0.4905
 ```
 {
   "input":{
-    "KG": "data/KBOX-iterative-T1/",
+    "KG": "data/KG/KBOX-iterative-T1/",
     "validate_file": "data/validation/filtered_pa_DRcheck.tsv",
-    "model": "models/KBOX-iterative-T1.h5_epochs_30.h5",
+    "model": "models/KBOX-iterative-T1.h5",
     "thresholds": "thresholds/T1_thresholds.txt"
   },
   

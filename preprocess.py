@@ -13,7 +13,7 @@ if __name__ == "__main__":
 	training_data = config["input"]["training_data"]
 	preprocess_dir = config["output"]["data_dir"]
 
-	#os.makedirs("./"+preprocess_dir, exist_ok=True)
+	os.makedirs("./"+preprocess_dir, exist_ok=True)
 
 	data = codecs.open(training_data, "r", encoding="utf-8")
 	entities = set()
