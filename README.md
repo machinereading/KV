@@ -1,26 +1,27 @@
 # KBCNN_KBC
 ## 개요
 주어진 지식그래프를 바탕으로 [카이스트 전산학과](https://cs.kaist.ac.kr/) 김지호 석사학위논문 (2018) 에 기술된 지식베이스 완성 모델인 KBCNN 모델을 학습하고, 학습된 모델을 바탕으로 지식을 검증할 수 있는 모듈입니다.
-크게 두 가지 모듈로 구성되어 있습니다.
+크게 세 가지 모듈로 구성되어 있습니다.
 * 모델 학습 모듈
   * 지식그래프, 모델 종류, 하이퍼매개변수를 입력으로 받아 해당 지식그래프를 전처리 합니다.
   * 전처리된 지식그래프를 바탕으로 지식베이스 완성 모델을 학습합니다.
   * 완성 모델에 대한 각 관계별 threshold를 계산합니다.
 * 지식 검증 모듈
   * 모델 학습 모듈에서 학습된 모델을 기반으로 입력된 지식들의 참/거짓을 검증합니다.
+* 지식 검증 서비스 모듈
+  * REST API를 이용한 실시간 서비스를 제공합니다.
 
 ## 환경설정
 * 본 모듈은 python 3 기반으로 구현되었습니다.
 * 다음 명령어를 통해 필요한 python 라이브러리들을 설치해 주세요.
   * 'pip install -r requirements.txt'
 
-* SWRC kbox.kaist.ac.kr 서버에서 실행할 경우
+* SWRC kbox.kaist.ac.kr 서버에서 실행할 경우 실행 명령 앞에 다음과 같이 sudo 명령어를 붙여 주세요.
 ```
-cd /home/iterative/
-python3 run.py
-python3 validate.py
+cd /home/iterative/KV
+sudo python3 run.py
+sudo python3 validate.py
 ```
-
 
 ## 모델 학습 모듈
 
@@ -68,8 +69,23 @@ python3 validate.py
 ### 실행
 다음과 같이 [run.py](run.py) 파일을 실행하여 결과를 추출할 수 있습니다.
 ```
-python run.py
+python3 run.py
 ```
+run.py는 다음과 같은 세 가지 프로세스를 실행하게끔 되어 있습니다.
+1. 전처리 단계
+```
+python3 preprocess.py
+```
+2. 학습 단계
+```
+python3 train.py
+```
+3. Threshold 계산 단계
+```
+python3 threshold.py
+```
+각 단계는 개별적으로 실행해도 상관이 없으며, [run_config.json](run_config.json) 파일의 설정에 따라 각 단계가 실행됩니다.
+예를 들어, 동일한 지식그래프를 사용하여 학습 단계만 진행하고 싶을 경우 전처리 단계와 Threshold 계산 단계를 같이 진행할 필요가 없기 때문에 학습 단계에 해당하는 [train.py](train.py) 파일만 실행시키면 됩니다.
 
 ### 출력 파일
 * 환경설정 파일 [run_config.json](run_config.json)의 output/data_dir 경로에 다음과 같은 파일들이 저장됩니다.
@@ -180,6 +196,34 @@ output/no_ent_or_rel_file: [results/KBOX-iterative-T1/pa_unlabeled.tsv](results/
 ```
 각 지식의 sbj, rel, obj가 탭으로 구분되어 출력됩니다.
 
+
+## 지식 검증 서비스 모듈
+
+### Input
+지식 검증 서비스 모듈은 지식 검증을 실시간으로 REST API로 제공하는 역할을 합니다.
+[service_config.json](service_config.json) 에서 다음과 같은 항목들을 설정하고 서비스를 실행하세요.
+```
+{
+  "KG": "data/KG/KBOX-iterative-T1/",
+  "model": "models/KBOX-iterative-T1.h5",
+  "thresholds": "thresholds/T1_thresholds.txt"
+}
+```
+* KG: 사용할 모델이 학습된 전처리된 지식그래프의 경로. 모델 학습 모듈에서 output/data_dir에 해당하는 폴더명을 기입하세요.
+* model: 지식 검증에 사용할 학습된 모델. (.h5 확장자) 모델 학습 모듈에서 output/model_output 파일명을 기입하세요.
+* thresholds: 각 관계별 thresholds 파일. 모델 학습 모듈에서 output/thresholds_output 파일명을 기입하세요.
+
+### 실행
+다음과 같이 [service.py](service.py) 파일을 실행하여 서비스를 실행해 주세요.
+```
+python3 service.py
+```
+
+service.py의 line 6,7에 다음 변수들을 바꾸어 서비스 실행 host 및 port를 변경할 수 있습니다.
+```
+host_addr = '143.248.135.20'
+port_num = 2848
+```
 
 ## Licenses
 * `CC BY-NC-SA` [Attribution-NonCommercial-ShareAlike](https://creativecommons.org/licenses/by-nc-sa/2.0/)

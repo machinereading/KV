@@ -1,5 +1,5 @@
 {
-	"KG": "data/KBOX-iterative-T1/",
-	"model": "models/KBOX-iterative-T1.h5_epochs_30.h5",
+	"KG": "data/KG/KBOX-iterative-T1/",
+	"model": "models/KBOX-iterative-T1.h5",
 	"thresholds": "thresholds/T1_thresholds.txt"
 }
