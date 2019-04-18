@@ -14,7 +14,7 @@ def threshold_by_test_data(kdb, cofig):
 	train = codecs.open(config["output"]["data_dir"]+"train.txt", "r", encoding="utf-8")
 	test = codecs.open(config["output"]["data_dir"]+"test.txt", "r", encoding="utf-8")
 
-	f = codecs.open(config["output"]["test_scores"], "w", encoding="utf-8")
+	#f = codecs.open(config["output"]["test_scores"], "w", encoding="utf-8")
 	fw = codecs.open(config["output"]["thresholds_output"], "w", encoding="utf-8")
 
 	whole_triple_dict = defaultdict(lambda: [])
@@ -86,9 +86,11 @@ def threshold_by_test_data(kdb, cofig):
 		threshold_dict[rel] = "%0.4f"%best_threshold
 		#print(kdb.id2word[rel], threshold_dict[rel])
 
+	"""
 	for rel in triple_label_score_by_rel.keys():
 		for tls in triple_label_score_by_rel[rel]:
 			f.write("\t".join(tls)+"\n")
+	"""
 
 	for rel in threshold_dict.keys():
 		fw.write(kdb.id2word[rel]+"\t"+threshold_dict[rel]+"\n")
