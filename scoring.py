@@ -2,8 +2,8 @@ from keras.models import load_model
 import codecs
 
 # normalization max/min scores
-NORM_MAX = 10
-NORM_MIN = -10
+NORM_MAX = 20
+NORM_MIN = -20
 
 def normalize(score):
 	normalized_score = (score-NORM_MIN) / (NORM_MAX - NORM_MIN)
