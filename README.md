@@ -69,6 +69,7 @@ sudo python3 validate.py
 모델 별 KDB2016-137 데이터셋에 대한 최적의 hyperparameter는 아래 표와 같습니다.
 
 모델 | KBCNN | ConvKB
+---------|----------|----------
 embedding_dimensions | 75 | 100
 dropout | 0.2 | 0.2
 epochs | 50 | 75

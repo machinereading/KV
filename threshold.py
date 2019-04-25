@@ -82,7 +82,6 @@ def threshold_by_test_data(kdb, cofig):
 			if f1 > best_f1:
 				best_f1 = f1
 				best_threshold = threshold[i]
-		best_threshold = (best_threshold-0.5)*0.07 + 0.5
 		threshold_dict[rel] = "%0.4f"%best_threshold
 		#print(kdb.id2word[rel], threshold_dict[rel])
 
