@@ -57,7 +57,7 @@ sudo python3 validate.py
     * embedding_dimensions: 개체 및 관계의 임베딩 차원 (주로 50, 75, 100, 200 중 택 1)
     * dropout: Dropout 수치 (주로 0.1 ~ 0.3)
     * epochs: 학습이 진행되는 횟수. 학습 데이터의 모든 삼항관계과 그에 대응하는 거짓 삼항관계들에 대해서 한 번씩 학습한 것이 1 epoch (주로 30 ~ 100)
-    * batch_size: 한 배치에 포함되는 참 삼항관계의 개수 (주로 125, 256 중 택 1)
+    * batch_size: 한 배치에 포함되는 참 삼항관계의 개수 (주로 128, 256 중 택 1)
     * learning_rate: 학습 속도 (주로 0.0005, 0.001 중 택 1)
     * number_of_filters: 컨볼루션 레이어의 필터 개수 (주로 50, 75, 100 중 택 1)
     * negative_sample_ratio: 학습용 참 삼항관계 하나당 같이 학습되는 거짓 삼항관계의 개수 (주로 1 ~ 10 사이의 자연수)
@@ -65,6 +65,17 @@ sudo python3 validate.py
   * data_dir: 전처리된 지식그래프가 저장될 경로 (폴더명)
   * model_output: 학습된 모델이 저장될 파일명. 확장자는 반드시 '.h5' 로 지정해 주세요.
   * thresholds_output: 각 관계별 threshold가 저장될 파일명. (txt 혹은 tsv 중 택 1)
+
+모델 별 KDB2016-137 데이터셋에 대한 최적의 hyperparameter는 아래 표와 같습니다.
+
+모델 | KBCNN | ConvKB
+embedding_dimensions | 75 | 100
+dropout | 0.2 | 0.2
+epochs | 50 | 75
+batch_size | 256 | 256
+learning_rate | 0.001 | 0.001
+number_of_filters | 50 | 75
+negative_sample_ratio | 5 | 5
 
 ### 실행
 다음과 같이 [run.py](run.py) 파일을 실행하여 결과를 추출할 수 있습니다.
