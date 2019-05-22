@@ -63,7 +63,7 @@ class Ranking(object):
             word_score_list.append((word_triple, triple_score_list[i][1]))
 
         if listlen == -1:
-            return word_socre_list, rank
+            return word_score_list, rank
 
         return word_score_list[:listlen], rank
 

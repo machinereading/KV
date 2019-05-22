@@ -79,25 +79,29 @@ class validator(object):
 		result_json["PL"] = dict()
 		validated_triples = []
 		for triple in triples:
-			sbj = triple["s"]
+			sbj = triple["s"].split("/")[0]
 			rel = triple["p"]
-			obj = triple["o"]
+			obj = triple["o"].split("/")[0]
 
 			if sbj not in self.kdb.word2id.keys() or obj not in self.kdb.word2id.keys() or rel not in self.kdb.word2id.keys():
 				validated_triples.append(triple)
-				print(triple)
+				print("not validated", triple)
 			else:
 
 				try:
 					triple_id = [self.kdb.word2id[sbj], self.kdb.word2id[rel], self.kdb.word2id[obj]]
 					score = round(self.model.predict([[triple_id]])[0][0], 4)
 					score = round(normalize(score), 4)
-					print(triple, score)
+					
 
 					if score >= self.thr_dict[rel]:
+						print("pass")
 						validated_triples.append(triple)
 					else:
+						print("deny")
 						pass
+
+					print(triple, score)
 				except:
 					print("except")
 					print(triple)
